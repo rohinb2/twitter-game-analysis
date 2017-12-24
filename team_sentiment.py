@@ -12,7 +12,7 @@ def get_tweets_containing_strings(query_strings, forbidden_string):
     for string in query_strings:
         count = 0
         try:
-            for tweet in tweepy.Cursor(api.search, string).items(7000):
+            for tweet in tweepy.Cursor(api.search, string).items(3500):
                 count += 1
                 if forbidden_string in tweet.text:
                     continue
@@ -23,7 +23,7 @@ def get_tweets_containing_strings(query_strings, forbidden_string):
                     tweets.add(tweet.text)
         except:
             print("Rate limit exceeded")
-        print("Count of tweets found: ", count)
+        print("Count of tweets found for " + query_strings[0] + ": ", count)
     return tweets
 
 def analyze_tweets_for_positive_feedback(query_strings, forbidden_string):
@@ -42,8 +42,8 @@ def get_twitter_supporter_percentages(home_team_city, home_team_name, away_team_
     query_strings_home_team = ["#" + home_team_name] #, "#" + home_team_city + home_team_name]
     query_strings_away_team = ["#" + away_team_name] #, "#" + away_team_city + away_team_name]
 
-    home_supporters_count = analyze_tweets_for_positive_feedback(query_strings_home_team, "#" + away_team_name)
     away_supporters_count = analyze_tweets_for_positive_feedback(query_strings_away_team, "#" + home_team_name)
-    total = home_supporters_count + away_supporters_count
-    return [home_supporters_count / total, away_supporters_count / total]
+    home_supporters_count = analyze_tweets_for_positive_feedback(query_strings_home_team, "#" + away_team_name)
 
+    total = home_supporters_count + away_supporters_count
+    return [away_supporters_count / total, home_supporters_count / total]
