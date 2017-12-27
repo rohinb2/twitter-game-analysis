@@ -56,6 +56,6 @@ def get_twitter_supporter_percentages(home_team_city, home_team_name, away_team_
     home_supporters_count = analyze_tweets_for_positive_feedback(api, query_strings_home_team, "#" + away_team_name)
 
     total = home_supporters_count + away_supporters_count
-    d = { "percentage_supporting_away_team": (away_supporters_count / total), 
-    "percentage_supporting_home_team": (home_supporters_count / total) }
+    d = { "percentage_supporting_away_team": (away_supporters_count / total) * 100, 
+    "percentage_supporting_home_team": (home_supporters_count / total) * 100 }
     return d
