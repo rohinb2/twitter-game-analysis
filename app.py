@@ -16,4 +16,5 @@ def game_tweets():
     return jsonify(get_twitter_supporter_percentages(home_team_city, home_team_name, away_team_city, away_team_name))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
