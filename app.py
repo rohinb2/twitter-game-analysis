@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+import os
 from team_sentiment import *
 
 app = Flask(__name__)
