@@ -3,7 +3,7 @@ from twitter_auth import TwitterAuth
 import tweepy
 
 def get_tweets_containing_strings(api, query_strings, forbidden_string):
-    NUM_OF_TWEETS_TO_QUERY = 2000 # max value is around 3,000 - 7 api calls per 100 tweets, 450 api calls.
+    NUM_OF_TWEETS_TO_QUERY = 500 # max value is around 3,000 - 7 api calls per 100 tweets, 450 api calls.
     print("Searching for: ", NUM_OF_TWEETS_TO_QUERY, " tweets.")
     data = api.rate_limit_status()
     print("API Calls remaining: ", data['resources']['search']['/search/tweets']['remaining'])
