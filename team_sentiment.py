@@ -19,7 +19,7 @@ def get_tweets_containing_strings(api, query_strings, forbidden_string):
             # if count % 100 == 0:
             #     data = api.rate_limit_status()
             #     print("Calls remaining: ", data['resources']['search']['/search/tweets']['remaining'])
-            
+                        
             if forbidden_string in tweet.text:
                 continue
             if tweet.retweet_count > 0:
