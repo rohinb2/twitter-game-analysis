@@ -1,6 +1,6 @@
 
 flake8==3.5.0
-Flask==0.12.2
+Flask==1.0
 Flask-Cors==3.0.2
 tweepy==3.5.0
 unicodecsv==0.14.1
